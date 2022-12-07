@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "UsuarioModel")
 @Getter
 @Setter
 @EqualsAndHashCode

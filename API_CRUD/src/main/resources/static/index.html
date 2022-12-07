@@ -136,7 +136,7 @@
 				$.ajax(
 						{
 							method : "POST",
-							url : "http://localhost:8080/crud/cadastrar",
+							url : "http://localhost:8080/crud/usuario/",
 							data : JSON.stringify({
 								id : id,
 								email : email,
@@ -167,14 +167,12 @@
 				$.ajax(
 						{
 									method : "GET",
-									url : 'http://localhost:8080/crud/buscarPorNome',
+									url : 'http://localhost:8080/crud/usuario/buscarPorNome/' + nome,
 									data : "nome=" + nome,
 									success : function(response) {
 										$('#tabelaResultados > tbody > tr')
 												.remove();
 										for (var i = 0; i < response.length; i++) {
-											$('#tabelaResultados > tbody > tr')
-													.remove();
 											$('#tabelaResultados > tbody')
 													.append(
 															'<tr id=' + response[i].id +'><th>'
@@ -216,11 +214,11 @@
 				$.ajax(
 						{
 							method : "DELETE",
-							url : 'http://localhost:8080/crud/deletar',
+							url : 'http://localhost:8080/crud/usuario/' + id,
 							data : "id=" + id,
 							success : function(response) {
-								//let idUsuario = id;
-								$("#" + id).remove();
+								let idUsuario = id;
+								$("#" + idUsuario).remove();
 								alert('Usuario com o ID: ' + id
 										+ " deletado com sucesso!")
 							}
@@ -235,7 +233,7 @@
 		function colocarEmEdicao(id) {
 			$.ajax({
 				method : "GET",
-				url : 'http://localhost:8080/crud/pesquisarUsuario',
+				url : 'http://localhost:8080/crud/usuario/' + id,
 				data : "id=" + id,
 				success : function(response) {
 					$('#id').val(response.id);
